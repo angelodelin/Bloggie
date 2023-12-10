@@ -1,0 +1,44 @@
+﻿@model List<Bloggie.Models.Domain.Tag>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Tags";
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tag Name</th>
+                    <th scope="col">
+                        <a asp-action="AddOrEdit" class="btn btn-small btn-success">
+                            <i class="fa-solid fa-plus"> New</i>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tag in Model)
+                {
+                <tr>
+                    <td>@tag.DisplayName</td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@tag.Id">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="AddOrEdit" asp-route-id="@tag.Id" class="btn btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('are you sure to delete this record?')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

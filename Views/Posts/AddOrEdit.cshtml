@@ -1,0 +1,72 @@
+﻿@model Bloggie.Models.Domain.BlogPost
+
+@{
+    ViewData["Title"] = "Blog";
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add Post - Admin Functionality</h1>
+    </div>
+    <div class="container">
+        <form asp-action="AddOrEdit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label class="form-label">Heading</label>
+                <input type="text" class="form-control" name="Heading" asp-for="Heading" />
+                <span asp-validation-for="Heading" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Page Title</label>
+                <input type="text" class="form-control" name="PageTitle" asp-for="PageTitle" />
+                <span asp-validation-for="PageTitle" class="text-danger"></span>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea id="description" class="form-control" name="Content" asp-for="Content">@Model.Content</textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Short Description</label>
+                <input type="text" class="form-control" name="ShortDescription" asp-for="ShortDescription" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Featured Image Url</label>
+                <input type="file" class="form-control" name="FeaturedImageUrl" asp-for="FeaturedImageUrl" />
+                <span asp-validation-for="FeaturedImageUrl" class="text-danger"></span>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Url Handle</label>
+                <input type="text" class="form-control" name="UrlHandle" asp-for="UrlHandle" />
+                <span asp-validation-for="UrlHandle" class="text-danger"></span>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                <input type="text" class="form-control" name="Author" asp-for="Author" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>            
+            <div class="mb-3">
+                <label class="form-label">Visible</label>
+                <select class="form-control" name="Visible" asp-for="Visible">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+                <span asp-validation-for="Visible" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark" value="AddOrEdit">Submit</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    .text-danger {
+        color: red;
+    }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

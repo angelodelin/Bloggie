@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Bloggie.Models.Domain.BlogPost>
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<div class="header">
+    <h2>Blog Name</h2>
+</div>
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Heading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visible)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blog in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => blog.Heading)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => blog.ShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => blog.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => blog.PublishedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => blog.Visible)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@blog.Id">Edit</a> |
+                    <a asp-action="ViewBlog" asp-route-id="@blog.Id">View</a> |
+                    <a asp-action="Delete" asp-route-id="@blog.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Heading)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.ShortDescription)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Author)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.PublishedDate)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Visible)</th>
+                    <th scope="col">
+                        <a asp-action="AddOrEdit" class="btn btn-small btn-success">
+                            <i class="fa-solid fa-plus"> New</i>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var blog in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => blog.Heading)</td>
+                        <td>@Html.DisplayFor(modelItem => blog.ShortDescription)</td>
+                        <td>@Html.DisplayFor(modelItem => blog.Author)</td>
+                        <td>@Html.DisplayFor(modelItem => blog.PublishedDate)</td>
+                        <td>@Html.DisplayFor(modelItem => blog.Visible)</td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@blog.Id">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="AddOrEdit" asp-route-id="@blog.Id" class="btn btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a asp-action="ViewBlog" asp-route-id="@blog.Id" class="btn btn-warning">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('are you sure to delete this record?')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@* <div>
+    <div class="row">
+        <div class="leftcolumn">
+            @foreach (var blog in Model)
+            {
+                <div class="card">
+                    <h2>@blog.Heading</h2>
+                    <h5>@blog.PageTitle - @blog.ShortDescription, @blog.PublishedDate</h5>
+                    <div class="fakeimg">@Html.Raw(blog.Content)</div>
+                    <p>Some text..</p>
+                </div>
+            }
+        </div>
+    </div>
+</div> *@

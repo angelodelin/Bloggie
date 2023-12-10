@@ -1,0 +1,17 @@
+﻿@model Bloggie.Models.Domain.BlogPost
+@{
+    ViewData["Title"] = Model.Heading;
+}
+
+<div>
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <h2>@Model.Heading</h2>
+            <h5>@Model.PageTitle - @Model.ShortDescription, @Model.PublishedDate</h5>
+            <div class="fakeimg">@Html.Raw(Model.Content)</div>
+                <p>@Model.FeaturedImageUrl</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model Bloggie.Models.Domain.Tag
+
+@{
+    ViewData["Title"] = "Tag";
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add Tag - Admin Functionality</h1>
+    </div>
+    <div class="container">
+        <form asp-action="AddOrEdit">
+            <input type="hidden" asp-for="Id"/>
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" asp-for="Name" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Display Name</label>
+                <input type="text" class="form-control" name="displayName" asp-for="DisplayName" />
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
